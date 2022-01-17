@@ -8,10 +8,7 @@ class Clock extends React.Component {
     }
 
     componentDidMount() {
-        this.timerID = setInterval(
-            () => this.tick(),
-            1000
-        );
+        this.setTime()
     }
 
     componentWillUnmount() {
@@ -23,13 +20,16 @@ class Clock extends React.Component {
             date: new Date()
         });
     }
-    handleClickStart = () =>{
-        this.timerID = setInterval(() => this.tick(), 1000);
+    handleClickStart = () => {
+        this.setTime()
     }
     handleClickStop = () =>{
         clearInterval(this.timerID);
     }
 
+    setTime() {
+        this.timerID = setInterval(() => this.tick(), 1000);
+    }
 
     render() {
         return (
